@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="content">
+        <h2>Search results for "{{ query }}"</h2>
+        <p>Scope: {{ scope }}</p>
+
+        {% if results.posts %}
+        <h3>Matching Posts ({{ results.posts|length }})</h3>
+        <div class="posts-grid">
+            {% for p in results.posts %}
+            <a href="/blogs/{{ p.id }}" class="post-card">
+                <h5>{{ p.title }}</h5>
+                <p>{{ p.body[:120] }}...</p>
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if results.users %}
+        <h3 style="margin-top:1.5rem;">Matching Users ({{ results.users|length }})</h3>
+        <div class="users-grid">
+            {% for u in results.users %}
+            <a href="/users/{{ u.id }}" class="user-card">
+                <h5>{{ u.name }} ({{ u.username }})</h5>
+                <p>{{ u.email }}</p>
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if not results.posts and not results.users %}
+            <p>No results found.</p>
+        {% endif %}
+    </div>
+{% endblock %}

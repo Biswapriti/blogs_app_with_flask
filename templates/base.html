@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg=white">
+    <nav>
+        <div class="nav-left">
+            <a href="/">📝 Blogs App</a>
+            <a href="/users">👥 Users</a>
+            <a href="/blogs">📚 Blogs</a>
+        </div>
+
+        <div class="nav-right">
+            <form class="search-form" action="/search" method="get">
+                <input type="search" name="q" placeholder="Search posts or users..." aria-label="Search" required>
+                <select name="scope" aria-label="Search scope">
+                    <option value="all">All</option>
+                    <option value="posts">Posts</option>
+                    <option value="users">Users</option>
+                </select>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

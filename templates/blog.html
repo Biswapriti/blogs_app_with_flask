@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>All Blogs</h2>
+    <div class="posts-grid">
+        {% for p in posts %}
+        <a href="/blogs/{{p.id}}" class="post-card">
+            <h5>{{ p.title }}</h5>
+            <p>{{p.body[:100]}}...</p>
+        </a>
+        {% endfor %}
+    </div>
+{% endblock %}

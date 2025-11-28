@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h2>All Users</h2>
+	<div class="users-grid">
+		{% for u in users %}
+		<a href="/users/{{ u.id }}" class="user-card">
+			<h5>{{ u.name }}</h5>
+			<p>{{ u.email }} | {{ u.phone }}</p>
+		</a>
+		{% endfor %}
+	</div>
+{% endblock %}
+

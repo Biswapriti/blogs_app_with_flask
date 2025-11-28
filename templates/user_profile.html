@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="user-profile">
+        <h2>User Profile: {{ user.name }}</h2>
+        <p class="user-info"><strong>Email:</strong> {{ user.email }}</p>
+        <p class="user-info"><strong>Phone:</strong> {{ user.phone }}</p>
+        <p class="user-info"><strong>Website:</strong> <a href="http://{{ user.website }}" target="_blank">{{ user.website }}</a></p>
+        <a href="/users/{{ user.id }}/comments">View Comments</a>
+
+        <h3 style="margin-top:1.5rem;">Blogs by {{ user.name }}</h3>
+        <div class="posts-grid">
+            {% for post in posts %}
+            <a href="/blogs/{{ post.id }}" class="post-card">
+                <h5>{{ post.title }}</h5>
+                <p>{{ post.body[:120] }}...</p>
+            </a>
+            {% else %}
+            <p>No posts found for this user.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

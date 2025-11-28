@@ -1,0 +1,10 @@
+{%extends "base.html"%}
+{% block content %}
+    <h2>Comments by User {{ user_id }}</h2>
+
+    <div>
+        {%for c in comments%}
+        <p><strong>{{ c.name }}</strong>: {{ c.body }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}

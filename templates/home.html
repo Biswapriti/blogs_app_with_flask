@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="hero creative-hero">
+        <div class="hero-inner">
+            <h1 class="hero-title">welcome to blogs app</h1>
+            <p class="hero-sub">Discover curated stories and insights from a growing community of writers.</p>
+            <div class="hero-cta">
+                <a class="btn" href="/blogs">Browse Blogs</a>
+                <a class="btn" href="/users">Meet Users</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured">
+        <h2>Featured Posts</h2>
+        <div class="posts-grid">
+            {% if featured_posts %}
+                {% for p in featured_posts %}
+                <a href="/blogs/{{ p.id }}" class="post-card">
+                    <h5>{{ p.title }}</h5>
+                    <p>{{ p.body[:140] }}...</p>
+                </a>
+                {% endfor %}
+            {% else %}
+                <p>No featured posts available.</p>
+            {% endif %}
+        </div>
+    </section>
+
+{% endblock %}
